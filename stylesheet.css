@@ -1,16 +1,31 @@
-  <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            text-align: center;
+let addSpaces = false;
+
+function convertToHex() {
+    const inputText = document.getElementById('inputText').value;
+    const resultElement = document.getElementById('hexResult');
+    let sjisArray = Encoding.convert(Encoding.stringToCode(inputText), 'SJIS');
+    let hexResult = '';
+    for (let i = 0; i < sjisArray.length; i++) {
+        let hex = sjisArray[i].toString(16).toUpperCase();
+        hex = ('00' + hex).slice(-2);
+        hexResult += hex;
+        if (addSpaces && i < sjisArray.length - 1) {
+            hexResult += ' ';
         }
-        .buttons {
-            margin-top: 10px;
-        }
-        .buttons button {
-            margin: 5px;
-        }
-    </style>
+    }
+    resultElement.textContent = hexResult;
+}
+
+function toggleSpaces() {
+    addSpaces = !addSpaces;
+    convertToHex();
+}
+
+function convertCase(caseType) {
+    const resultElement = document.getElementById('hexResult');
+    if (caseType === 'upper') {
+        resultElement.textContent = resultElement.textContent.toUpperCase();
+    } else if (caseType === 'lower') {
+        resultElement.textContent = resultElement.textContent.toLowerCase();
+    }
+}
