@@ -1,4 +1,4 @@
- <style>
+  <style>
         body {
             display: flex;
             justify-content: center;
@@ -6,11 +6,16 @@
             height: 100vh;
             flex-direction: column;
             text-align: center;
+            margin: 0;
         }
         .buttons {
             margin-top: 10px;
         }
         .buttons button {
             margin: 5px;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
         }
     </style>
