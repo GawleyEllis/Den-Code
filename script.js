@@ -1,20 +1,53 @@
-function convertToHex() {
-    // テキスト入力欄の値を取得
-    const inputText = document.getElementById('inputText').value;
-    // 結果を表示する要素を取得
-    const resultElement = document.getElementById('hexResult');
+let addSpaces = false;
 
-    // Shift JISの16進数への変換処理
+function convertToHex() {
+    const inputText = document.getElementById('inputText').value;
+    const resultElement = document.getElementById('hexResult');
     let sjisArray = Encoding.convert(Encoding.stringToCode(inputText), 'SJIS');
     let hexResult = '';
     for (let i = 0; i < sjisArray.length; i++) {
-        // 各バイトを16進数に変換
         let hex = sjisArray[i].toString(16).toUpperCase();
-        // 必要に応じて2桁にパディング
         hex = ('00' + hex).slice(-2);
         hexResult += hex;
+        if (addSpaces && i < sjisArray.length - 1) {
+            hexResult += ' ';
+        }
     }
-
-    // 結果を表示
     resultElement.textContent = hexResult;
 }
+
+function toggleSpaces() {
+    addSpaces = !addSpaces;
+    convertToHex();
+}
+
+function convertCase(caseType) {
+    const resultElement = document.getElementById('hexResult');
+    if (caseType === 'upper') {
+        resultElement.textContent = resultElement.textContent.toUpperCase();
+    } else if (caseType === 'lower') {
+        resultElement.textContent = resultElement.textContent.toLowerCase();
+    }
+}
+
+function addSpaceBetween() {
+    const resultElement = document.getElementById('hexResult');
+    let currentText = resultElement.textContent;
+    const inputText = document.getElementById('inputText').value;
+    let sjisArray = Encoding.convert(Encoding.stringToCode(inputText), 'SJIS');
+    let hexResult = '';
+    for (let i = 0; i < sjisArray.length; i++) {
+        let hex = sjisArray[i].toString(16).toUpperCase();
+        hex = ('00' + hex).slice(-2);
+        hexResult += hex + ' ';
+    }
+    resultElement.textContent = currentText + ' ' + hexResult.trim();
+}
+
+document.getElementById('inputText').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        addSpaceBetween();
+        document.getElementById('inputText').value = '';
+    }
+});
