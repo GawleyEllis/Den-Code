@@ -30,24 +30,9 @@ function convertCase(caseType) {
     }
 }
 
-function addSpaceBetween() {
-    const resultElement = document.getElementById('hexResult');
-    let currentText = resultElement.textContent;
-    const inputText = document.getElementById('inputText').value;
-    let sjisArray = Encoding.convert(Encoding.stringToCode(inputText), 'SJIS');
-    let hexResult = '';
-    for (let i = 0; i < sjisArray.length; i++) {
-        let hex = sjisArray[i].toString(16).toUpperCase();
-        hex = ('00' + hex).slice(-2);
-        hexResult += hex + ' ';
-    }
-    resultElement.textContent = currentText + ' ' + hexResult.trim();
-}
-
 document.getElementById('inputText').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
-        addSpaceBetween();
-        document.getElementById('inputText').value = '';
+        convertToHex();
     }
 });
