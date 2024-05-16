@@ -1,15 +1,19 @@
-function convertToDenCode() {
+function convertToHex() {
     // テキスト入力欄の値を取得
     const inputText = document.getElementById('inputText').value;
     // 結果を表示する要素を取得
-    const resultElement = document.getElementById('denCodeResult');
+    const resultElement = document.getElementById('hexResult');
 
-    // Den codeへの変換処理（例: 各文字をUnicodeエスケープシーケンスに変換）
-    let denCodeResult = '';
+    // UTF-16の16進数への変換処理
+    let hexResult = '';
     for (let i = 0; i < inputText.length; i++) {
-        denCodeResult += '\\u' + ('0000' + inputText.charCodeAt(i).toString(16)).slice(-4);
+        // 各文字をUTF-16の16進数に変換
+        let hex = inputText.charCodeAt(i).toString(16).toUpperCase();
+        // 必要に応じて4桁にパディング
+        hex = ('0000' + hex).slice(-4);
+        hexResult += hex;
     }
 
     // 結果を表示
-    resultElement.textContent = denCodeResult;
+    resultElement.textContent = hexResult;
 }
