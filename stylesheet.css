@@ -51,9 +51,6 @@
             border: 1px solid #000;
             padding: 10px;
             margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             width: 100%;
         }
         .result-container p {
@@ -77,7 +74,14 @@
             border: 1px solid #000;
             background-color: #fff;
             cursor: pointer;
-            width: 200px; /* ボタンの幅を設定 */
+            width: 150px; /* ボタンの幅を設定 */
+            display: inline-block;
+        }
+        .buttons-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
         }
         /* スマホ用スタイル */
         @media (max-width: 600px) {
