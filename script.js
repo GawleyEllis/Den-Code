@@ -39,15 +39,6 @@ function copyToClipboard() {
     });
 }
 
-function copySiteToClipboard() {
-    const siteURL = window.location.href;
-    navigator.clipboard.writeText(siteURL).then(() => {
-        alert('このサイトのURLがコピーされました');
-    }).catch(err => {
-        console.error('サイトURLのコピーに失敗しました', err);
-    });
-}
-
 document.getElementById('inputText').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
