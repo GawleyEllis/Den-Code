@@ -1,4 +1,4 @@
- <style>
+  <style>
         body {
             display: flex;
             justify-content: flex-start;
@@ -11,7 +11,7 @@
         .container {
             text-align: left;
             width: 90%;
-            max-width: 800px; /* サイズを広げる */
+            max-width: 800px;
         }
         .header {
             display: flex;
@@ -59,8 +59,8 @@
             height: 60px; /* 3行程度の高さ */
             overflow-y: auto;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: flex-start; /* 上部に配置 */
         }
         .result-container p {
             margin: 0;
