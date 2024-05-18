@@ -1,4 +1,4 @@
-  <style>
+ <style>
         body {
             display: flex;
             justify-content: flex-start;
@@ -56,6 +56,8 @@
             padding: 10px;
             margin-top: 10px;
             width: 100%;
+            height: 60px; /* 3行程度の高さ */
+            overflow-y: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -66,7 +68,7 @@
             white-space: pre-wrap;
             flex: 1;
         }
-        .copy-button, .site-copy-button {
+        .copy-button {
             padding: 5px 10px;
             font-size: 12px;
             border: 1px solid #000;
