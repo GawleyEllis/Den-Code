@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hexadecimal Converter</title>
-    <link rel="stylesheet" href="https://joker079.github.io/Den-Code/stylesheet.css">
+    <link rel="stylesheet" href="https://joker079.github.io/calculator/stylesheet.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/encoding-japanese/1.0.30/encoding.min.js"></script>
-
+  
 </head>
 <body>
     <div class="container">
@@ -22,9 +22,10 @@
             <button onclick="convertCase('lower')">小文字に変換</button>
         </div>
         <div class="result-container">
-            <p>16進数結果: <span id="hexResult"></span></p>
+            <p><span id="hexResult"></span></p>
+            <button class="copy-button" onclick="copyToClipboard()">コピー</button>
         </div>
-        <button class="copy-button" onclick="copyToClipboard()">コピー</button>
+        <button class="site-copy-button" onclick="copySiteToClipboard()">このサイトをコピー</button>
     </div>
     <script src="script.js"></script>
 </body>
