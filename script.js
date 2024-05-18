@@ -30,13 +30,18 @@ function convertCase(caseType) {
     }
 }
 
+function copyToClipboard() {
+    const hexResult = document.getElementById('hexResult').textContent;
+    navigator.clipboard.writeText(hexResult).then(() => {
+        alert('16進数結果がコピーされました');
+    }).catch(err => {
+        console.error('コピーに失敗しました', err);
+    });
+}
+
 document.getElementById('inputText').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         convertToHex();
     }
 });
-
-
-
-
