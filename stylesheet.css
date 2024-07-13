@@ -1,4 +1,9 @@
   <style>
+
+.header h1 .highlight {
+    color: turquoise;
+}
+
         body {
             display: flex;
             justify-content: flex-start;
